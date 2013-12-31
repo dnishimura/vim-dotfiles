@@ -49,6 +49,9 @@ Bundle 'fs111/pydoc.vim'
 Bundle "vim-ruby/vim-ruby"
 Bundle 'tpope/vim-endwise'
 
+" Go bundles
+Bundle 'dnishimura/vim-go'
+
 " Fun, but not useful
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'skammer/vim-css-color'
@@ -255,3 +258,11 @@ map <leader>t :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
+
+" Go
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+autocmd FileType go compiler go
