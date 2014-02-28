@@ -100,7 +100,7 @@ set backspace=indent,eol,start " Make backspace behave normally.
 set directory=/tmp// " swap files
 set backupskip=/tmp/*,/private/tmp/*
 set ffs=unix,dos,mac "Default file types
-set nowrap        " don't wrap lines
+set wrap        " don't wrap lines
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase,
@@ -112,17 +112,24 @@ set undolevels=1000      " use many muchos levels of undo
 set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
-set guifont=Inconsolata\ for\ Powerline:h13
-
-" Remove the toolbar if we're running under a GUI (e.g. MacVIM).
-if has("gui_running")
-  set guioptions=-t
-endif
 
 " Default background & theme
 "set background=dark
 "colorscheme solarized
 colorscheme desert
+" Remove the toolbar if we're running under a GUI (e.g. MacVIM).
+if has("gui_running")
+    set background=dark
+    colorscheme solarized
+    if has("gui_gtk2")
+        set guifont=Inconsolata\ 12
+    else
+        set guifont=Monospace:h12
+    endif
+    set guioptions=-t
+    colorscheme solarized
+endif
+
 
 " Special characters for hilighting non-priting spaces/tabs/etc.
 set list listchars=tab:»\ ,trail:·
@@ -192,6 +199,9 @@ au FileType puppet setlocal noexpandtab
 
 " Get jinja filetype selection working correctly for *.jinja.html files.
 au BufNewFile,BufReadPost *.jinja* setlocal filetype=htmljinja
+
+" C++
+au BufNewFile,BufReadPost *.cpp,*.hpp set filetype=cpp
 
 " Get rid of search hilighting with ,/
 nnoremap <silent> <leader>/ :nohlsearch<CR>
