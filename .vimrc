@@ -48,6 +48,8 @@ Bundle 'fs111/pydoc.vim'
 " Ruby
 Bundle "vim-ruby/vim-ruby"
 Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
 
 " Go bundles
 Bundle 'dnishimura/vim-go'
