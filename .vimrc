@@ -6,60 +6,61 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Vundle help
 """"""""""""""
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 
 
 " VCS
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " System
-Bundle 'vim-scripts/Gist.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'rking/ag.vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/syntastic'
-Bundle 'Raimondi/delimitMate'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mhinz/vim-signify'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'vim-scripts/Gist.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'rking/ag.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'Raimondi/delimitMate'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " Syntaxes
-Bundle 'leshill/vim-json'
-Bundle 'puppetlabs/puppet-syntax-vim'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'othree/html5.vim'
-Bundle 'itspriddle/vim-jquery'
-Bundle 'atourino/jinja.vim'
+Plugin 'leshill/vim-json'
+Plugin 'puppetlabs/puppet-syntax-vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'othree/html5.vim'
+Plugin 'itspriddle/vim-jquery'
+Plugin 'atourino/jinja.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 " Python
-Bundle 'nvie/vim-flake8'
-Bundle 'fs111/pydoc.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'fs111/pydoc.vim'
 
 " Ruby
-Bundle "vim-ruby/vim-ruby"
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
 
 " Go bundles
-Bundle 'dnishimura/vim-go'
+" Plugin 'dnishimura/vim-go'
 
 " Fun, but not useful
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'skammer/vim-css-color'
-Bundle 'mgutz/vim-colors'
-Bundle 'ehamberg/vim-cute-python'
-Bundle 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'skammer/vim-css-color'
+Plugin 'mgutz/vim-colors'
+Plugin 'ehamberg/vim-cute-python'
+Plugin 'bling/vim-airline'
 
 " Required after vundle plugin definitions
 filetype plugin indent on
@@ -187,11 +188,12 @@ autocmd FileType php setlocal colorcolumn=100
 autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 
 " Python configurations
-autocmd FileType python setlocal shiftwidth=4 expandtab tabstop=4 softtabstop=4
 autocmd FileType python setlocal colorcolumn=80
 autocmd FileType python map <buffer> <F4> :call Flake8()<CR>
 autocmd FileType python autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal shiftwidth=8 noexpandtab tabstop=8 softtabstop=8
+autocmd FileType python setlocal noexpandtab
 
 " Javascript configurations
 au BufNewFile,BufReadPost *.js setlocal shiftwidth=2 expandtab
