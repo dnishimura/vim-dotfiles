@@ -32,6 +32,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'yegappan/mru'
 
 " Syntaxes
 Plugin 'leshill/vim-json'
@@ -63,6 +64,9 @@ Plugin 'skammer/vim-css-color'
 Plugin 'mgutz/vim-colors'
 Plugin 'ehamberg/vim-cute-python'
 Plugin 'bling/vim-airline'
+
+" Elixir
+Plugin 'elixir-lang/vim-elixir'
 
 " Required after vundle plugin definitions
 filetype plugin indent on
@@ -181,7 +185,7 @@ autocmd FileType mail setlocal listchars=
 :map <F5> :setlocal spell! spelllang=en_us<CR>
 
 " Ruby Configurations
-autocmd filetype ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 shiftwidth=2 colorcolumn=80
+autocmd filetype ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 shiftwidth=2 colorcolumn=100
 
 " PHP Configurations
 autocmd FileType php setlocal colorcolumn=100
@@ -190,12 +194,14 @@ autocmd FileType php setlocal colorcolumn=100
 autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 
 " Python configurations
-autocmd FileType python setlocal colorcolumn=80
+autocmd FileType python setlocal colorcolumn=100
 autocmd FileType python map <buffer> <F4> :call Flake8()<CR>
 autocmd FileType python autocmd BufWritePre * :%s/\s\+$//e
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal shiftwidth=8 noexpandtab tabstop=8 softtabstop=8
-autocmd FileType python setlocal noexpandtab
+" autocmd FileType python setlocal shiftwidth=8 noexpandtab tabstop=8 softtabstop=8
+autocmd FileType python setlocal tabstop=4
+autocmd FileType python setlocal shiftwidth=4
+autocmd FileType python setlocal expandtab
 
 " Javascript configurations
 au BufNewFile,BufReadPost *.js setlocal shiftwidth=2 expandtab
@@ -238,7 +244,7 @@ let g:tagbar_autofocus = 1
 
 " crtl-p
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'  " search anything (in files, buffers and MRU files at the same time.)
+let g:ctrlp_cmd = 'CtrlPMixed'  " search anything (in files, buffers and MRU files at the same time.)
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
 "let g:ctrlp_working_path_mode = 'ra' " search for nearest ancestor like .git, .hg, and the directory of the current file
@@ -290,3 +296,14 @@ au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>e <Plug>(go-rename)
+
+"Navi shortcuts
+nnoremap <leader>l  :buffers<CR>:buffer<Space>
+nnoremap <C-S-Left>   :bprevious<CR>
+nnoremap <C-S-Right>  :bnext<CR>
+
+" Neovim configs
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
+set cm=blowfish2               " Encryption for -x flag
